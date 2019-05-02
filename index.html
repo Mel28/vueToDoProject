@@ -9,21 +9,68 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href= "css/style.css">
 </head>
-<body>
-     
-<nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-              <img alt="Vue To do List" src="...">
-            </a>
-          </div>
-        </div>
-      </nav>
-      <div id="app">
-    <h2>{{appName}}</h2>
-   
-</div>
+        <body class="container col-lg-4">
+                <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                          <div class="navbar-header">
+                            <a class="navbar-brand" href="#">
+                              <img alt="To Do List" src="...">
+                            </a>
+                          </div>
+                        </div>
+                      </nav>
+                <h2>To Do List</h2>
+        
+            <div id="app"></div>
+        
+            <!-- This unusual tag is a script text/template. It does not actually appear on the page as HTML. However, Vue can reference this HTML by ID and use it essentially as a template string. -->
+            <script type="text/x-template" id="app-template">
+               
+                <section>
+                    <h4>
+                        <label v-on:click="showComplete = !showComplete">
+                            <input type="checkbox" v-model="showComplete">
+                            Show Completed
+                        </label>
+                    </h4>
+                    <form v-on:submit="addTodo">
+                            <input
+                                    type="text"
+                                    v-model="text"
+                                    class="form-control"
+                                    placeholder="Add new task!">
+            
+                            <!-- Note the property :disabled. It begins with a colon (:), indicating that Vue should interpret the value as an expression, and not a string.-->
+                            <button
+                                    :disabled="submitIsDisabled"
+                                    class="btn btn-primary mt-2">
+                                Add Todo
+                            </button>
+                        </form>
+                    <ul>
+                        <!-- The v-for attribute that we see here repeats whatever tag it is on (in this case, a LI) one time for each element of the referenced list, which in this case is our list. Each repetition, the property has a different value.  -->
+                        <li v-for="todo in filteredTodos"  v-on:click="todo.complete = !todo.complete;">
+                            <label class="form-check-label ml-4">
+                                <input
+                                        type="checkbox"
+                                        v-model="todo.complete"
+                                        class="form-check-input">
+                                <span>
+                                       <p> {{ todo.name }}: </p>
+                                        <p>{{ todo.description }} </p>
+                                    </span>
+                            </label>
+                            <button v-on:click="removeToDo" class="btn btn-danger" type="button">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                  </button>
+                                </span>
+                        </li>
+                    </ul>
+                    
+                  </div>
+            
+                </section>
+            </script>
     
     <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
     <script src="js/app.js"></script>
