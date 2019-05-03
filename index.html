@@ -25,45 +25,43 @@
         
             <!-- This unusual tag is a script text/template. It does not actually appear on the page as HTML. However, Vue can reference this HTML by ID and use it essentially as a template string. -->
             <script type="text/x-template" id="app-template">
-               
-                <section>
-                    <h4>
-                        <label v-on:click="showComplete = !showComplete">
-                            <input type="checkbox" v-model="showComplete">
-                            Show Completed
-                        </label>
-                    </h4>
-                    <form v-on:submit="addTodo">
+             
+                <section class="outer-container">
+                   
+                    <div class="container">
+                        <div class="add-todo-group input-group">
+                              <span class="input-group-addon">
+                              <i class="glyphicon glyphicon-list-alt"></i>
+                            </span>
+                            
+                          <form v-on:submit.prevent="addTodo">
                             <input
                                     type="text"
                                     v-model="text"
                                     class="form-control"
                                     placeholder="Add new task!">
+                                    
             
                             <!-- Note the property :disabled. It begins with a colon (:), indicating that Vue should interpret the value as an expression, and not a string.-->
-                            <button
-                                    :disabled="submitIsDisabled"
-                                    class="btn btn-primary mt-2">
-                                Add Todo
+                            <button :disabled="submitIsDisabled" class="btn btn-primary mt-2">
+                                Add To List
                             </button>
                         </form>
+                      </div>
                     <ul>
                         <!-- The v-for attribute that we see here repeats whatever tag it is on (in this case, a LI) one time for each element of the referenced list, which in this case is our list. Each repetition, the property has a different value.  -->
-                        <li v-for="todo in filteredTodos"  v-on:click="todo.complete = !todo.complete;">
+                        <li v-for="todo in filteredTodos" v-on:click="todo.complete = !todo.complete" class="list-group-item">
                             <label class="form-check-label ml-4">
-                                <input
-                                        type="checkbox"
-                                        v-model="todo.complete"
-                                        class="form-check-input">
+                               
                                 <span>
-                                       <p> {{ todo.name }}: </p>
-                                        <p>{{ todo.description }} </p>
+                                       <h4 class="list-group-item-heading"> {{ todo.name }}: </h4>
+                                        <p class="list-group-item-text">{{ todo.description }} </p>
                                     </span>
                             </label>
-                            <button v-on:click="removeToDo" class="btn btn-danger" type="button">
+                                </span>
+                                <button v-on:click="removeToDo" class="btn btn-danger" type="button">
                                     <i class="glyphicon glyphicon-remove"></i>
                                   </button>
-                                </span>
                         </li>
                     </ul>
                     

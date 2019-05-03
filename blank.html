@@ -1,0 +1,13 @@
+v-on:click="todo.complete = !todo.complete;"  (line57)
+
+<input
+type="checkbox"
+v-model="todo.complete"
+class="form-check-input"> (line 59)
+
+<h4>
+        <label v-on:click="showComplete = !showComplete">
+            <input type="checkbox" v-model="showComplete">
+            Show Completed
+        </label>
+    </h4> (line30)

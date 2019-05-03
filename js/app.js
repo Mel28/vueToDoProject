@@ -63,23 +63,23 @@ var todoapp = new Vue({
 ]*/
 
 let todos = [
-    {name:"Submit Mile stone project number 4", description: "Finish ReadMe doc and make final commits and deployments", order: 0, complete: true},
+    {name:"Submit Mile stone project number 4", description: "Finish ReadMe doc and make final commits and deployments", id:"0", complete:false},
     {
         name:"Take cat to the vet",
-        order: 1,
+        id: "1",
         description: "Take cat to the vet on Saturday for annual injection",
         complete: false
     },
     {
         name: "Submit Milestone project number 5",
         description: "create bug tracking app and blog including use of shopping cart/stripe secure payment. Using django frameworks",
-        order: 2,
+        id: "2",
         complete: false
     },
     {
         name: "Practise piano",
         description: "learn a new chord each week",
-        order:3,
+        id: "3",
         complete: false
     }
 
@@ -106,7 +106,8 @@ new Vue({
         {
             todos,
             text:``,
-            showComplete:true,
+            
+        
         }
     ),
 
@@ -119,7 +120,8 @@ new Vue({
         /**
          * Returns a list of todos with the completed ones removed, when the application is so configured.
          */
-        filteredTodos(){
+       
+       filteredTodos(){
             return this.todos
                 .filter(todo=>this.showComplete ? true : !todo.complete);
         },
@@ -146,13 +148,11 @@ new Vue({
             this.text = ``;
            },
            removeToDo(){
-           todos.splice({
-            name:this.text,
-            description:this.text
-           });
-
-           this.text = ``;
-           }
+            todos.splice(index, id);
+ 
+            this.text = ``;
+            },
+          
         }
 });
  
