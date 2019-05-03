@@ -63,23 +63,24 @@ var todoapp = new Vue({
 ]*/
 
 let todos = [
-    {name:"Submit Mile stone project number 4", description: "Finish ReadMe doc and make final commits and deployments", id:"0", complete:false},
-    {
-        name:"Take cat to the vet",
-        id: "1",
-        description: "Take cat to the vet on Saturday for annual injection",
-        complete: false
-    },
+    {name:"Submit Mile stone project number 4", description: "Finish ReadMe doc and make final commits and deployments", id: "1", complete:false},
     {
         name: "Submit Milestone project number 5",
         description: "create bug tracking app and blog including use of shopping cart/stripe secure payment. Using django frameworks",
-        id: "2",
+        id: "3",
         complete: false
     },
     {
+        name:"Take cat to the vet",
+        id: "2",
+        description: "Take cat to the vet on Saturday for annual injection",
+        complete: false
+    },
+ 
+    {
         name: "Practise piano",
         description: "learn a new chord each week",
-        id: "3",
+        id: "4",
         complete: false
     }
 
@@ -106,7 +107,7 @@ new Vue({
         {
             todos,
             text:``,
-            
+            sort:``,
         
         }
     ),
@@ -147,12 +148,13 @@ new Vue({
             
             this.text = ``;
            },
-           removeToDo(){
-            todos.splice(index, id);
- 
+         
+         sortTodo(){
+            todos.sort({
+                id:this.filteredTodos,
+            });
             this.text = ``;
-            },
-          
+         },
         }
 });
  
