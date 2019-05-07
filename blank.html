@@ -13,3 +13,20 @@ class="form-check-input"> (line 59)
     </h4> (line30)
 
     v-on:click="todo.complete = !todo.complete;
+
+    <draggable v-model="todos" group="id" @start="drag=true" @end="drag=false"></draggable>
+
+
+    filteredTodos(){
+        todos.sort({
+            id:this.filteredTodos,
+        });
+        this.text = ``;
+     },
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+     <draggable v-model="filteredTodos" @start="dragging=true" @end="dragging=false">
+    </draggable>
+
+      <!-- CDNJS :: Vue.Draggable (https://cdnjs.com/) -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>

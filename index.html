@@ -48,11 +48,11 @@
                             </button>
                         </form>
                       </div>
-                    <ul>
+                      
+                    <ul class="list-group">
                         <!-- The v-for attribute that we see here repeats whatever tag it is on (in this case, a LI) one time for each element of the referenced list, which in this case is our list. Each repetition, the property has a different value.  -->
-                        <li v-for="(todo, index) in filteredTodos" v-bind:key="todo.id" class="list-group-item">
+                        <li v-for="todo in filteredTodos":key="todo.id" class="list-group-item">
                             <label class="form-check-label ml-4">
-                               
                                 <span>
                                        <h4 class="list-group-item-heading"> {{ todo.name }}: </h4>
                                         <p class="list-group-item-text">{{ todo.description }} </p>
@@ -64,7 +64,7 @@
                                   </button>
                         </li>
                     </ul>
-                    
+                  
                   </div>
             
                 </section>

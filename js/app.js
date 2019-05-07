@@ -63,11 +63,11 @@ var todoapp = new Vue({
 ]*/
 
 let todos = [
-    {name:"Submit Mile stone project number 4", description: "Finish ReadMe doc and make final commits and deployments", id: "1", complete:false},
+    {name:"Submit Mile stone project number 4", description: "Finish ReadMe doc and make final commits and deployments", id: "3", complete:false},
     {
         name: "Submit Milestone project number 5",
         description: "create bug tracking app and blog including use of shopping cart/stripe secure payment. Using django frameworks",
-        id: "3",
+        id: "1",
         complete: false
     },
     {
@@ -80,12 +80,11 @@ let todos = [
     {
         name: "Practise piano",
         description: "learn a new chord each week",
-        id: "4",
+        id: "0",
         complete: false
     }
 
 ]
-
 
 
  //All Vue applications are initialized with a `new Vue()` method call. The object that is passed to the method call is the configuration for our whole application.
@@ -107,7 +106,8 @@ new Vue({
         {
             todos,
             text:``,
-            sort:``,
+            id:``,
+            sort:``
         
         }
     ),
@@ -123,11 +123,18 @@ new Vue({
          */
        
        filteredTodos(){
-            return this.todos
+        function sortList(a, b){
+            if(a.id > b.id){
+                return 1;
+            } else{
+                return -1;
+            }
+        }
+        return this.todos.sort(sortList)
                 .filter(todo=>this.showComplete ? true : !todo.complete);
+                
         },
-
-       
+        
     },
 
     /**
@@ -148,14 +155,9 @@ new Vue({
             
             this.text = ``;
            },
-         
-         sortTodo(){
-            todos.sort({
-                id:this.filteredTodos,
-            });
-            this.text = ``;
-         },
-        }
+    }
 });
  
+
+
 
